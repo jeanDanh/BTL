@@ -1,0 +1,155 @@
+*, *::before, *::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(images/BK-background.png);
+    background-size: contain;
+}
+
+.center{
+    /* use for horizontally centering the middle white wrapper (login page) */
+    position: relative;
+    margin: auto;
+    background-color: white;
+}
+
+.center-in-wrapper{
+    /* use for centering every input field in form */
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.text-center{
+    /* use as shared class for text that need centering */
+    text-align: center;
+}
+
+form input{
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%);
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-top: 20px;
+
+    border: 1.7px solid black;
+    border-radius: 4px;
+    box-shadow: 0px 5px 3px #f1f1f1;
+}
+
+.text-align-right{
+    /* just like text-center but to the right */
+    text-align: right;
+}
+
+section{
+    /* format the size of the white wrapper (login page) */
+    height: 100vh;
+    width: 505px;
+}
+
+h1{
+    /* the only header */
+    padding-top: 60px;
+    padding-bottom: 40px;
+    font-size: 120%;
+}
+
+.center .bk-logo{
+    /* the bk logo in the login page */
+    width: 30%;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.form-login{
+    /* the div that wrap around form */
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+
+    width: 228.4px;
+}
+
+input{
+    /* input field */
+    position: relative;
+}
+
+.input-field-format{
+    /* just as the name suggest */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-top: 20px;
+
+    border: 1.7px solid black;
+    border-radius: 4px;
+    box-shadow: 0px 5px 3px #f1f1f1;
+}
+
+.login-button{
+    /* because its width orignally not as big as the TEN TAI KHOAN and PASSWORD, so I dedicate a whole selector for the login button. */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 70px;
+    padding-right: 70px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+
+    border: none;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0px 5px 3px 1px #acacac;
+
+    font-weight: bold;
+    color: #032B91;
+}
+
+.login-button:active{
+    /* set the visual effect when I click the login button */
+    box-shadow: 0px 3px 3px 1px #acacac inset;
+    background-color: aliceblue;
+}
+
+.forget-pass{
+    /* forget password link */
+    padding-top: 10px;
+}
+
+.center .footer{
+    /* The text "Moi y kien phan hoi..." */
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: white;
+}
+
+/* responsive design for screen with width smaller than 505px */
+@media only screen and (max-width: 505px) {
+    section {
+        position: relative;
+        top: 1vh;
+        width: 100vw;
+        height: 98vh;
+        overflow: scroll;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    section {
+        position: relative;
+        top: 1vh;
+        width: 90vw;
+        height: 98vh;
+        overflow: scroll;
+    }
+}
