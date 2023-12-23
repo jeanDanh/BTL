@@ -1,2 +1,2 @@
-Github chính thức btl database
-Thành viên: Danh, Ký, Nguyên, Hiếu
+Github chính thức btl cnpm
+Thành viên: Danh, Duy Minh, Đắc Vinh
