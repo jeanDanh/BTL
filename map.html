@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <me charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BKPrint map</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./style/styles.css">
+        <style>
+            .item1 {
+                grid-area: header;
+            }
+
+            .item2 {
+                grid-area: menu;
+            }
+
+            .item3 {
+                grid-area: main;
+            }
+
+            .item4 {
+                grid-area: info;
+            }
+
+            .item5 {
+                grid-area: footer;
+            }
+
+            .printer-info {
+                width: 200px;
+                grid-area: info;
+            }
+
+            .image-container {
+                display: inline-block;
+                overflow: hidden;
+                position: relative;
+                z-index: 1;
+            }
+
+            .image-container img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+            #opacity-map {
+                opacity: 0.5;
+                width: 50px;
+                width: 500px;
+                margin: 0;
+            }
+
+            .grid-container {
+                display: grid;
+                grid-template-areas:
+                    'header header header'
+                    'menu main info'
+                    'footer footer footer';
+            }
+
+
+
+            /* drag and drop upload box */
+            #drop-zone {
+                border: 2px dashed #ccc;
+                padding: 20px;
+                text-align: center;
+                cursor: pointer;
+            }
+
+            #drop-zone.highlight {
+                border-color: #2196F3;
+            }
+
+            #file-input {
+                display: none;
+            }
+
+            .image-container .geopin {
+                position: absolute;
+                z-index: 2;
+                width: 20px;
+                /*geopin size*/
+                /*coordination system based on the middle bottom point of the bounding box*/
+                transform: translate(-50%, -100%);
+
+            }
+
+            .image-container .geopin:hover {
+                cursor: pointer;
+            }
+
+            .image-container .geopin.clicked {
+                box-shadow: 0px 0px 20px 15px rgba(0, 255, 255, 0.75);
+            }
+
+            .image-container .geopin1 {
+                left: 25.35%;
+                top: 64.6%;
+            }
+
+            .image-container .geopin2 {
+                left: 83%;
+                top: 67%;
+            }
+
+            .image-container .geopin3 {
+                left: 42.75%;
+                top: 42.5%;
+            }
+
+            .image-container .geopin4 {
+                left: 65%;
+                top: 20%;
+            }
+
+            .image-container .geopin5 {
+                left: 63%;
+                top: 55%;
+            }
+
+            .image-container .geopin6 {
+                left: 87%;
+                top: 22%;
+            }
+        </style>
+</head>
+
+<body>
+    <div class="grid-container">
+        <div class="item1">
+            <h1>HỆ THỐNG MÁY IN BÁCH KHOA</h1>
+            <h3>Trang bản đồ trường Bách khoa</h3>
+            <div>
+                <div class="arrow"></div>
+                <a href="./index.html" onmouseover="arrowColorChange(true)" onmouseout="arrowColorChange(false)">
+                    <button>Đăng xuất</button>
+                </a>
+            </div>
+        </div>
+        <ul class="item2">
+            <li>Điều hướng</li>
+            <li><a href="/mana.html">Print request</a></li>
+            <li><a href="/map.html">Map</a></li>
+            <li><a href="/payment.html">Payment</a></li>
+        </ul>
+
+
+
+        <div class="item3">
+            <div>
+                <h4>Bản đồ interative</h4>
+            </div>
+            <div class="image-container">
+                <img id="opacity-map" src="./assets/bkmap.png" alt="bk map"></img>
+                <div id="connectionline"></div>
+                <img class="geopin geopin1" src="./assets/geopin.png"
+                    onclick="updateInfo('B1_CS1','Canon','200','Hoạt động')" alt="">
+                <img class="geopin geopin2" src="./assets/geopin.png"
+                    onclick="updateInfo('B10_CS1','HP','48','Bảo trì')" alt="">
+                <img class="geopin geopin3" src="./assets/geopin.png"
+                    onclick="updateInfo('B4_CS1','Sony','N/A','Hoạt động')" alt="">
+                <img class="geopin geopin4" src="./assets/geopin.png" alt=""
+                    onclick="updateInfo('C1_CS1','Canon','150','Bảo')">
+                <img class="geopin geopin5" src="./assets/geopin.png"
+                    onclick="updateInfo('A4_CS1','Canon','165','Hoạt động')" alt="">
+                <img class="geopin geopin6" src="./assets/geopin.png"
+                    onclick="updateInfo('C5_CS1','Ricoh','24','Bảo trì')" alt="">
+            </div>
+        </div>
+        <div class="item4">
+            <div>
+                <h4>THÔNG TIN MÁY IN</h4>
+            </div>
+            <ul id="printer-info">
+                <li>Mã máy in:</li>
+                <li>Hiệu:</li>
+                <li>Trạng thái:</li>
+                <li>Số giấy còn lại:</li>
+            </ul>
+        </div>
+        <div class="item5">
+            <p>Mọi ý kiến xin vui lòng phản hồi tại<a href="mailto:example@mail.com">example@mail.com</a></p>
+        </div>
+    </div>
+    <script>
+
+
+        const geopinNode = document.querySelectorAll('.geopin');
+
+        geopinNode.forEach(img => {
+            img.addEventListener('click', function () {
+                this.classList.toggle('clicked');
+            });
+        });
+
+        document.addEventListener('click', function (event) {
+            geopinNode.forEach(img => {
+                if (!img.contains(event.target)) {
+                    img.classList.remove('clicked');
+                }
+            });
+        });
+
+        function updateInfo(codename, brand, status, paperCount) {
+            const liNode = document.getElementById('printer-info');
+            let connectionLine = document.querySelector("#connectionline");
+            liNode.innerHTML = `
+                <li>Mã máy in:${codename}</li >
+                <li>Hiệu:${brand}</li>
+                <li>Trạng thái:${paperCount}</li>
+                <li>Số giấy còn lại:${status}</li>
+            `;
+            if (codename == "B1_CS1") {
+                Object.assign(connectionLine.style, {
+                    position: 'absolute',
+                    top: 0,
+                    left: '25.35%',
+                    height: '62%',
+                    width: 'calc(100% - 25.35%)',
+                    borderTop: '10px solid cyan',
+                    borderLeft: '10px solid cyan',
+                    zIndex: 2,
+                });
+            } else if (codename == "B4_CS1") {
+                Object.assign(connectionLine.style, {
+                    position: 'absolute',
+                    top: 0,
+                    left: '42.75%',
+                    height: '40%',
+                    width: 'calc(100% - 42.75%)',
+                    borderTop: '10px solid cyan',
+                    borderLeft: '10px solid cyan',
+                    zIndex: 2,
+                });
+            } else if (codename == "C1_CS1") {
+                Object.assign(connectionLine.style, {
+                    position: 'absolute',
+                    top: 0,
+                    left: '65%',
+                    height: '20%',
+                    width: 'calc(100% - 65%)',
+                    borderTop: '10px solid cyan',
+                    borderLeft: '10px solid cyan',
+                    zIndex: 2,
+                });
+            } else if (codename == "C5_CS1") {
+                Object.assign(connectionLine.style, {
+                    position: 'absolute',
+                    top: 0,
+                    left: '87%',
+                    height: '22%',
+                    width: 'calc(100% - 83%)',
+                    borderTop: '10px solid cyan',
+                    borderLeft: '10px solid cyan',
+                    zIndex: 2,
+                });
+            } else if (codename == "B10_CS1") {
+                Object.assign(connectionLine.style, {
+                    position: 'absolute',
+                    top: 0,
+                    left: '83%',
+                    height: '67%',
+                    width: 'calc(100% - 83%)',
+                    borderTop: '10px solid cyan',
+                    borderLeft: '10px solid cyan',
+                    zIndex: 2,
+                });
+            } else if (codename == "A4_CS1") {
+                Object.assign(connectionLine.style, {
+                    position: 'absolute',
+                    top: 0,
+                    left: '63%',
+                    height: '55%',
+                    width: 'calc(100% - 63%)',
+                    borderTop: '10px solid cyan',
+                    borderLeft: '10px solid cyan',
+                    zIndex: 2,
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>

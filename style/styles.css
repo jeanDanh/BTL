@@ -1,0 +1,262 @@
+* {
+    /* border: 1px dotted blue; */
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+html {
+    border: none;
+}
+
+body {
+
+
+    border: none;
+
+
+    background-size: 145px;
+    box-sizing: border-box;
+    background-image: url('../assets/bkprintbackground.png');
+    font-family: 'Roboto', sans-serif;
+}
+
+.grid-container {
+    padding: 25px;
+}
+
+h1,
+h3 {
+    margin-bottom: 10px;
+}
+
+.item1 a {
+    text-decoration: none;
+    display: block;
+}
+
+.item1>div {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.item1 a button {
+    position: relative;
+    z-index: 1;
+    padding: 10px;
+    width: 100px;
+    border-radius: 20px;
+    border-color: transparent;
+}
+
+.item1 a button:hover {
+    cursor: pointer;
+    background-color: #e33b29;
+    color: white;
+}
+
+.item1 .arrow {
+    position: absolute;
+    left: 4px;
+    z-index: 2;
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 7.5px 10px 7.5px 0;
+    border-color: transparent #9c9c9c transparent transparent;
+    transform: rotate(0deg);
+}
+
+
+
+.item1 {
+    grid-area: header;
+}
+
+.item2 {
+    text-align: center;
+    color: #06263D;
+    grid-area: menu;
+    border: 3px solid #06263D;
+    border-radius: 10px;
+    background-color: #ffffff;
+    list-style-type: none;
+}
+
+.item2 li:first-child {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #06263D;
+    color: white;
+}
+
+.item2 li:not(:first-child) {
+    z-index: 1;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.item2 li:not(:first-child):hover {
+    z-index: 2;
+    box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.27);
+}
+
+.item2 li a {
+    display: block;
+    text-decoration: none;
+    color: #06263D;
+}
+
+
+.item3 {
+    grid-area: main;
+    border: 3px solid #DB147B;
+    border-radius: 10px;
+}
+
+.item3 ul {
+    list-style-type: none;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.item3>div:first-child {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #DB147B;
+}
+
+
+
+
+.item3 .blue-text-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blue-text-button button {
+    border: none;
+    padding: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border: 3px solid #06263D;
+    color: #06263D;
+    background-color: white;
+    font-family: 'Roboto';
+    font-weight: 600;
+    border-radius: 20px;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+
+.blue-text-button button:hover {
+    cursor: pointer;
+}
+
+.blue-text-button button:active {
+    border: 3px solid #1488DB;
+    color: #1488DB;
+}
+
+.item3 div h4 {
+    text-align: center;
+    color: white;
+}
+
+.item3>p {
+    color: red;
+}
+
+.item4 {
+    grid-area: right;
+    background-color: #ffffff;
+    border: 2px solid #3BE229;
+    border-radius: 10px;
+}
+
+.item4>div:first-child {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #3BE229;
+    color: #06263D;
+}
+
+.item4 ul {
+    list-style-type: none;
+}
+
+.item4 ul li {
+    margin: 10px;
+}
+
+.item4 ul li img {
+    display: inline-block;
+    /* Make the img behave like an inline element */
+    vertical-align: middle;
+    /* Align the img vertically with the middle of the line-height */
+    width: 20px;
+    /* Set a fixed width for the img */
+    height: 20px;
+    /* Set a fixed height for the img */
+    margin-right: 10px;
+    /* Add some space between the img and the text */
+}
+
+.item4 ul li div {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.item4 h4 {
+    text-align: center;
+}
+
+.item5 {
+    grid-area: footer;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        'header header header header header'
+        'menu main main right right'
+        'footer footer footer footer footer';
+
+
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 5px rgba(39, 94, 170, 0.52);
+    margin-left: 50%;
+    transform: translate(-50%);
+    height: calc(100vh - 60px);
+    /* Adjust the top and bottom gap by changing the value */
+    margin-top: 30px;
+    /* Adjust the top gap separately if needed */
+    margin-bottom: 30px;
+    /* Adjust the bottom gap separately if needed */
+    overflow: auto;
+    /* Add overflow:auto to enable scrolling if the content exceeds the height */
+
+    width: calc(100vw - 60px);
+    /* Adjust the left and right gap by changing the value */
+    overflow: auto;
+    /* Add overflow:auto to enable scrolling if the content exceeds the height */
+}
+
+/* drag and drop upload box */
+#drop-zone {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#drop-zone.highlight {
+    border-color: #2196F3;
+}
+
+#file-input {
+    display: none;
+}

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BKPrint payment</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style/styles.css">
+    <style>
+        .item1 {
+            grid-area: header;
+        }
+
+        .item2 {
+            grid-area: menu;
+        }
+
+        .item3 {
+            grid-area: main;
+        }
+
+        .item4 {
+            grid-area: right;
+        }
+
+        .item5 {
+            grid-area: footer;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-areas:
+                'header header header header header'
+                'menu main main right right'
+                'footer footer footer footer footer';
+        }
+
+        .payment-method {
+            display: grid;
+            grid-template-areas:
+                'bkpay bkpay'
+                'momo vnpay'
+                'zalopay spay'
+            ;
+        }
+
+        :root {
+            --paddingSize: 20px;
+        }
+
+
+        .payment-method a {
+            margin: 10px;
+        }
+
+        .bkpay {
+            grid-area: bkpay;
+            background-image: url('/assets/bkpay.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            padding-top: var(--paddingSize);
+            padding-bottom: var(--paddingSize);
+            background-color: #1FB0EF;
+        }
+
+        .momo {
+            grid-area: momo;
+            background-image: url('/assets/momo.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            padding-top: var(--paddingSize);
+            padding-bottom: var(--paddingSize);
+            background-color: #AD006C;
+        }
+
+        .vnpay {
+            grid-area: vnpay;
+            background-image: url('/assets/vnpay.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            padding-top: var(--paddingSize);
+            padding-bottom: var(--paddingSize);
+            background-color: #0259A7;
+        }
+
+        .zalopay {
+            grid-area: zalopay;
+            background-image: url('/assets/zalopay.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            padding-top: var(--paddingSize);
+            padding-bottom: var(--paddingSize);
+            background-color: #0068FF;
+        }
+
+        .spay {
+            grid-area: spay;
+            background-image: url('/assets/spay.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            padding-top: var(--paddingSize);
+            padding-bottom: var(--paddingSize);
+            background-color: #EE4E2E;
+        }
+
+        /* .dummy-confirmed-file {} */
+    </style>
+</head>
+
+<body>
+    <div class="grid-container">
+        <div class="item1">
+            <h1>HỆ THỐNG MÁY IN BÁCH KHOA</h1>
+            <h3>Trang thanh toán</h3>
+            <div>
+                <div class="arrow"></div>
+                <a href="./index.html" onmouseover="arrowColorChange(true)" onmouseout="arrowColorChange(false)">
+                    <button>Đăng xuất</button>
+                </a>
+            </div>
+        </div>
+        <ul class="item2">
+            <li>Điều hướng</li>
+            <li><a href="/mana.html">Print request</a></li>
+            <li><a href="/map.html">Map</a></li>
+            <li><a href="/payment.html">Payment</a></li>
+        </ul>
+        <div class="item3">
+            <div>
+                <h4>Xác nhận file đã lựa chọn</h4>
+            </div>
+            <div class="dummy-confirmed-file">
+            </div>
+            <ul>
+                <li>Số trang: 10</li>
+                <li>Khổ giấy: A4</li>
+                <li>Số dư còn lại sau khi in: 5 tờ</li>
+            </ul>
+        </div>
+        <div class="item4">
+            <div>
+                <h4>Mua thêm lượt in</h4>
+            </div>
+            <div class="payment-method">
+                <a class="bkpay" href="https://bkpay.hcmut.edu.vn/"></a>
+                <a class="momo" href="https://momo.vn/"></a>
+                <a class="vnpay" href="https://vnpay.vn/"></a>
+                <a class="zalopay" href="https://zalopay.vn/"></a>
+                <a class="spay" href="https://shopeepay.vn/"></a>
+            </div>
+            <p>Số dư: 15 tờ</p>
+            <div class="blue-text-button">
+                <button type="button">XÁC NHẬN</button>
+            </div>
+        </div>
+        <div class="item5">
+            <p>Mọi ý kiến xin vui lòng phản hồi tại<a href="mailto:example@mail.com">example@mail.com</a></p>
+        </div>
+    </div>
+</body>
+
+</html>

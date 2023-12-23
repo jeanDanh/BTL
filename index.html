@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BKPrint login</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+            border: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: aquamarine;
+
+            position: relative;
+            background-image: url(./assets/bkprintbackground.png);
+            background-size: 145px;
+            box-sizing: border-box;
+        }
+
+        .wrapper {
+            min-height: 100%;
+            overflow: auto;
+            position: relative;
+            margin-left: 50%;
+            transform: translate(-50%);
+            background-color: white;
+            height: calc(100vh - 60px);
+            /* Adjust the top and bottom gap by changing the value */
+            margin-top: 30px;
+            /* Adjust the top gap separately if needed */
+            margin-bottom: 30px;
+            /* Adjust the bottom gap separately if needed */
+            /* Add overflow:auto to enable scrolling if the content exceeds the height */
+
+            width: 800px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px 5px rgba(39, 94, 170, 0.52);
+        }
+
+        h2 {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        h4 {
+            text-align: center;
+        }
+
+        img {
+            margin-top: 30px;
+            margin-left: 30%;
+            transform: translate(-50%);
+            margin-left: 50%;
+        }
+
+        input[type=text],
+        button {
+            margin-left: 50%;
+            transform: translate(-50%);
+            display: block;
+            text-align: center;
+        }
+
+        input[type=text] {
+            padding: 15px;
+            margin-top: 40px;
+            border-radius: 10px;
+            background-color: #1488db;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #email {
+            color: blue;
+            text-decoration: underline;
+        }
+
+        #email:active {
+            text-decoration: none;
+            color: blue;
+        }
+
+        button {
+            /* nut dang nhap */
+            font-family: 'Roboto', sans-serif;
+            margin-top: 50px;
+            border-radius: 10px;
+            padding: 15px;
+            width: 200px;
+            color: #1488db;
+            background-color: #e8e8e8;
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+
+        button:active {
+            /* an nut dang nhap */
+            background-color: #cfcfcf;
+            color: white;
+        }
+
+        input[type=text]::placeholder {
+            font-family: 'Roboto', sans-serif;
+            color: white;
+            transition-property: color;
+            transition-duration: 0.5s;
+            transition-delay: 0s;
+        }
+
+        input[type=text]:focus {
+            color: white;
+        }
+
+        input[type=text]:focus::placeholder {
+            color: rgba(255, 255, 255, 0.5)
+        }
+
+        #feedback-sentence {
+            /* background-color: gray;
+            text-align: center;
+            position: fixed;
+            transform: translate(-50%);
+            overflow: visible;
+            top: 0;
+            width: 100%; */
+
+            background-color: blanchedalmond;
+            position: sticky;
+            top: 100%;
+            overflow: visible;
+            z-index: 2;
+        }
+
+        #feedback-sentence p {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h2>DỊCH VỤ XÁC THỰC TẬP TRUNG</h2>
+        <h4>Hệ thống máy in Bách khoa</h4>
+        <img src="/assets/bklogo.png" alt="bk logo">
+        <form>
+            <input type="text" placeholder="TÊN ĐĂNG NHẬP">
+            <input type="text" placeholder="MẬT KHẨU">
+            <a href="./mana.html"><button type="button" onclick="">ĐĂNG NHẬP</button></a>
+        </form>
+        <div id="feedback-sentence">
+            <p>Mọi ý kiến xin vui lòng phản hồi tại <a id="email" href="mailto:example@mail.com">example@mail.com</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+
+    </script>
+</body>
+
+</html>
